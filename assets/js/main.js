@@ -78,28 +78,66 @@ skillHeaderArr.forEach((element, idx) => {
 // QUALIFICATION TABS
 let education = document.getElementById("education");
 let work = document.getElementById("work");
+let gpa = document.getElementById("gpa");
 let educationheader = document.getElementById("educationheader");
 let workheader = document.getElementById("workheader");
-workheader.style.color = "var(--first-colour)";
+let gpaheader = document.getElementById("gpaheader");
+workheader.style.color = "var(--text-color)";
+gpaheader.style.color = "var(--text-color)";
 
 educationheader.addEventListener("click", () => {
   let condition1 = work.classList.contains("qualification-inactive");
+  let condition2= gpa.classList.contains("qualification-inactive");
   if (!condition1) {
     education.classList.remove("qualification-inactive");
     work.classList.add("qualification-inactive");
-    workheader.style.color = "var(--text-colour)";
-    educationheader.style.color = "var(--first-colour)";
+    workheader.style.color = "var(--text-color)";
+    gpaheader.style.color = "var(--text-color)";
+    educationheader.style.color = "var(--first-color)";
+  }
+  if(!condition2){
+    education.classList.remove("qualification-inactive");
+    gpa.classList.add("qualification-inactive");
+    gpaheader.style.color = "var(--text-color)";
+    educationheader.style.color = "var(--first-color)";
   }
 });
 workheader.addEventListener("click", () => {
-  let condition2 = education.classList.contains("qualification-inactive");
-  if (!condition2) {
+  let condition1 = education.classList.contains("qualification-inactive");
+  let condition2= gpa.classList.contains("qualification-inactive");
+  if (!condition1) {
     work.classList.remove("qualification-inactive");
     education.classList.add("qualification-inactive");
-    educationheader.style.color = "var(--text-colour)";
-    workheader.style.color = "var(--first-colour)";
+    educationheader.style.color = "var(--text-color)";
+    workheader.style.color = "var(--first-color)";
+  }
+  if(!condition2){
+    work.classList.remove("qualification-inactive");
+    gpa.classList.add("qualification-inactive");
+    gpaheader.style.color = "var(--text-color)";
+    workheader.style.color = "var(--first-color)";
   }
 });
+
+gpaheader.addEventListener("click", () => {
+  let condition1 = education.classList.contains("qualification-inactive");
+  let condition2= work.classList.contains("qualification-inactive");
+  if (!condition1) {
+    gpa.classList.remove("qualification-inactive");
+    education.classList.add("qualification-inactive");
+    educationheader.style.color = "var(--text-color)";
+    gpaheader.style.color = "var(--first-color)";
+  }
+  if(!condition2){
+    gpa.classList.remove("qualification-inactive");
+    work.classList.add("qualification-inactive");
+    workheader.style.color = "var(--text-color)";
+    gpaheader.style.color = "var(--first-color)";
+  }
+
+  
+});
+
 
 // PORTFOLIO SWIPER
 let swiper = new Swiper(".mySwiper", {
